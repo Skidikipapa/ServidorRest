@@ -1,14 +1,23 @@
 package es.prueba.web.servidorrest.rest;
 
-import java.util.Random;
-
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ControladorRest {
-  @GetMapping("/")
-	  public String home() {
-		  return Integer.toString(new Random().nextInt(20));
-	  }
+
+    private int numeroUsuarios = 0;
+
+    @GetMapping("/")
+	  public String consultaUsuario() {
+	    return Integer.toString(numeroUsuarios);
+    }
+    
+    @PostMapping("/")
+	  public String modificaUsuario(@RequestBody String modificacionUsuario) {
+    		numeroUsuarios += Integer.parseInt(modificacionUsuario);
+    	    return Integer.toString(numeroUsuarios);
+	 }
 }
