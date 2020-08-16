@@ -18,6 +18,8 @@ public class ControladorRest {
     @PostMapping("/")
 	  public String modificaUsuario(@RequestBody String modificacionUsuario) {
     		numeroUsuarios += Integer.parseInt(modificacionUsuario);
-    	    return Integer.toString(numeroUsuarios);
+    	  if (numeroUsuarios < 0)
+          numeroUsuarios = 0;
+        return Integer.toString(numeroUsuarios);
 	 }
 }
